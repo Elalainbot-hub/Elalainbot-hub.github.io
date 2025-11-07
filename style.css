@@ -231,4 +231,46 @@ h2 {
 @keyframes loading {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
+
+}
+/* Aviso de demostración */
+.demo-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffeb3b;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid #ffc107;
+    z-index: 1000;
+}
+
+.demo-notice p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Mejoras de accesibilidad */
+.btn:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #4285F4;
+    outline-offset: 2px;
+}
+
+/* Placeholder para inputs */
+.input-group input:placeholder-shown + label {
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #5f6368;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    transform: translateY(-180%);
+    font-size: 12px;
+    color: #4285F4;
 }
