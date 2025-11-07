@@ -3,151 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión - Google</title>
+    <title>Portal de Acceso - Demo Educativo</title>
     
-    <!-- Meta tags de seguridad -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://accounts.google.com https://policies.google.com https://support.google.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
-    <meta name="referrer" content="no-referrer">
+    <meta name="description" content="Demostración educativa de interfaces de usuario">
+    <meta name="robots" content="noindex, nofollow">
     
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
 </head>
 <body>
     <div class="container">
-        <!-- Panel de inicio de sesión principal -->
-        <div class="login-box" id="loginPanel">
-            <div class="logo">
-                <span style="color: #4285F4;">G</span>
-                <span style="color: #EA4335;">o</span>
-                <span style="color: #FBBC05;">o</span>
-                <span style="color: #4285F4;">g</span>
-                <span style="color: #34A853;">l</span>
-                <span style="color: #EA4335;">e</span>
-            </div>
-            
-            <h2>Iniciar sesión</h2>
-            <p class="subtitle">Utiliza tu Cuenta de Google</p>
-            
-            <form id="loginForm">
-                <div class="input-group">
-                    <input type="email" id="email" name="email" required autocomplete="off">
-                    <label for="email">Correo electrónico o teléfono</label>
-                </div>
-                
-                <div class="input-group hidden" id="passwordGroup">
-                    <input type="password" id="password" name="password" required autocomplete="off">
-                    <label for="password">Introduce tu contraseña</label>
-                </div>
-                
-                <div class="links">
-                    <a href="#" class="forgot-link" id="forgotEmailLink">¿Has olvidado tu correo electrónico?</a>
-                </div>
-                
-                <div class="info-box hidden" id="securityInfo">
-                    <p>Protegido por reCAPTCHA y sujeto a la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> y <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Términos del Servicio</a> de Google.</p>
-                </div>
-                
-                <div class="buttons">
-                    <a href="#" class="create-account" id="createAccountLink">Crear cuenta</a>
-                    <button type="button" id="nextBtn" class="btn btn-primary">Siguiente</button>
-                    <button type="button" id="submitBtn" class="btn btn-primary hidden" onclick="redirectToGoogleLogin()">Iniciar sesión</button>
-                </div>
-            </form>
+        <div class="header">
+            <h1>🔐 Portal de Demostración</h1>
+            <p class="subtitle">Interfaz educativa - No es un sitio real de login</p>
         </div>
 
-        <!-- Panel de recuperación de email -->
-        <div class="login-box hidden" id="forgotEmailPanel">
-            <div class="logo">
-                <span style="color: #4285F4;">G</span>
-                <span style="color: #EA4335;">o</span>
-                <span style="color: #FBBC05;">o</span>
-                <span style="color: #4285F4;">g</span>
-                <span style="color: #34A853;">l</span>
-                <span style="color: #EA4335;">e</span>
+        <!-- Panel de demostración de login -->
+        <div class="demo-box" id="loginPanel">
+            <div class="demo-logo">
+                <span>D</span><span>E</span><span>M</span><span>O</span>
             </div>
             
-            <h2>Encontrar tu correo electrónico</h2>
-            <p class="subtitle">Introduce tu número de teléfono o dirección de correo electrónico de recuperación</p>
+            <h2>Simulación de Acceso</h2>
+            <p class="demo-subtitle">Esta es una demostración educativa de interfaz</p>
             
-            <form id="forgotEmailForm">
-                <div class="input-group">
-                    <input type="text" id="recoveryInfo" name="recoveryInfo" required autocomplete="off">
-                    <label for="recoveryInfo">Teléfono o correo electrónico</label>
-                </div>
-                
-                <div class="info-box">
-                    <p>Protegido por reCAPTCHA y sujeto a la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> y <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Términos del Servicio</a> de Google.</p>
-                </div>
-                
-                <div class="buttons">
-                    <button type="button" id="backToLoginFromForgot" class="btn btn-secondary">Atrás</button>
-                    <button type="button" class="btn btn-primary" onclick="redirectToGoogleRecovery()">Siguiente</button>
-                </div>
-            </form>
+            <div class="input-group">
+                <input type="email" id="email" placeholder=" " autocomplete="off">
+                <label for="email">Correo de demostración</label>
+            </div>
+            
+            <div class="input-group hidden" id="passwordGroup">
+                <input type="password" id="password" placeholder=" " autocomplete="off">
+                <label for="password">Contraseña de prueba</label>
+            </div>
+            
+            <div class="demo-info">
+                <p><strong>⚠️ AVISO IMPORTANTE:</strong> Esta es una simulación educativa. No introduzcas datos reales.</p>
+            </div>
+            
+            <div class="buttons">
+                <button type="button" id="nextBtn" class="btn btn-demo">Continuar Demo</button>
+                <button type="button" id="demoLoginBtn" class="btn btn-demo hidden" onclick="showEducationalMessage()">Ver Demostración</button>
+            </div>
+
+            <div class="external-links">
+                <p>Enlaces a sitios oficiales:</p>
+                <button class="link-btn" onclick="redirectToOfficial('google')">Google Oficial</button>
+                <button class="link-btn" onclick="redirectToOfficial('recovery')">Recuperación Oficial</button>
+                <button class="link-btn" onclick="redirectToOfficial('signup')">Registro Oficial</button>
+            </div>
         </div>
 
-        <!-- Panel de creación de cuenta -->
-        <div class="login-box hidden" id="createAccountPanel">
-            <div class="logo">
-                <span style="color: #4285F4;">G</span>
-                <span style="color: #EA4335;">o</span>
-                <span style="color: #FBBC05;">o</span>
-                <span style="color: #4285F4;">g</span>
-                <span style="color: #34A853;">l</span>
-                <span style="color: #EA4335;">e</span>
+        <!-- Mensaje educativo -->
+        <div class="demo-box hidden" id="educationalPanel">
+            <div class="demo-logo">
+                <span>🎓</span>
             </div>
             
-            <h2>Crear tu cuenta de Google</h2>
-            <p class="subtitle">Introduce tu información personal</p>
+            <h2>Demostración Educativa Completa</h2>
             
-            <form id="createAccountForm">
-                <div class="input-group">
-                    <input type="text" id="firstName" name="firstName" required autocomplete="off">
-                    <label for="firstName">Nombre</label>
-                </div>
+            <div class="educational-content">
+                <h3>¿Qué has visto?</h3>
+                <ul>
+                    <li>✅ Simulación de flujo de login</li>
+                    <li>✅ Diseño de interfaz de usuario</li>
+                    <li>✅ Validación de formularios</li>
+                    <li>✅ Navegación entre paneles</li>
+                </ul>
                 
-                <div class="input-group">
-                    <input type="text" id="lastName" name="lastName" required autocomplete="off">
-                    <label for="lastName">Apellidos</label>
-                </div>
+                <h3>Propósito educativo:</h3>
+                <p>Esta demostración muestra conceptos de desarrollo frontend y diseño de interfaces sin almacenar ni procesar datos reales.</p>
                 
-                <div class="input-group">
-                    <input type="email" id="newEmail" name="newEmail" required autocomplete="off">
-                    <label for="newEmail">Correo electrónico</label>
+                <div class="security-info">
+                    <h4>🔒 Seguridad Informática</h4>
+                    <p>Nunca introduzcas contraseñas reales en sitios de demostración. Siempre verifica la URL oficial.</p>
                 </div>
-                
-                <div class="input-group">
-                    <input type="password" id="newPassword" name="newPassword" required autocomplete="off">
-                    <label for="newPassword">Contraseña</label>
-                </div>
-                
-                <div class="info-box">
-                    <p>Protegido por reCAPTCHA y sujeto a la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> y <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Términos del Servicio</a> de Google.</p>
-                </div>
-                
-                <div class="buttons">
-                    <button type="button" id="backToLoginFromCreate" class="btn btn-secondary">Atrás</button>
-                    <button type="button" class="btn btn-primary" onclick="redirectToGoogleSignup()">Crear cuenta</button>
-                </div>
-            </form>
-        </div>
-        
-        <div class="footer">
-            <select id="language">
-                <option>Español (España)</option>
-                <option>English (United States)</option>
-            </select>
-            <div class="footer-links">
-                <a href="https://support.google.com" target="_blank" rel="noopener noreferrer">Ayuda</a>
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacidad</a>
-                <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Términos</a>
+            </div>
+            
+            <div class="buttons">
+                <button type="button" class="btn btn-demo" onclick="resetDemo()">Nueva Demostración</button>
+                <button type="button" class="btn btn-secondary" onclick="redirectToOfficial('google')">Ir a Google Oficial</button>
             </div>
         </div>
     </div>
 
-    <!-- Aviso de demostración -->
-    <div class="demo-notice">
-        <p>🔐 <strong>DEMOSTRACIÓN - </strong> Redirige a Google oficial. No se almacenan datos.</p>
+    <div class="footer">
+        <div class="footer-content">
+            <p><strong>Proyecto Educativo - Desarrollo Frontend</strong></p>
+            <p>Este sitio es una demostración técnica para fines educativos.</p>
+            <div class="footer-links">
+                <a href="https://developers.google.com" target="_blank" rel="noopener">Documentación Google</a>
+                <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN Web Docs</a>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
