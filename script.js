@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordGroup = document.getElementById('passwordGroup');
     const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
-    const loginForm = document.getElementById('loginForm');
     const securityInfo = document.getElementById('securityInfo');
-    const successModal = document.getElementById('successModal');
     
     // Elementos de navegación entre paneles
     const loginPanel = document.getElementById('loginPanel');
@@ -17,21 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const createAccountLink = document.getElementById('createAccountLink');
     const backToLoginFromForgot = document.getElementById('backToLoginFromForgot');
     const backToLoginFromCreate = document.getElementById('backToLoginFromCreate');
-    
-    // Formularios
-    const forgotEmailForm = document.getElementById('forgotEmailForm');
-    const createAccountForm = document.getElementById('createAccountForm');
-
-    // Datos que vamos a capturar (solo para demostración)
-    let capturedData = {
-        email: '',
-        password: '',
-        recoveryInfo: '',
-        firstName: '',
-        lastName: '',
-        newEmail: '',
-        newPassword: ''
-    };
 
     // Función para cambiar entre paneles
     function showPanel(panelToShow) {
@@ -47,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Evento para el botón "Siguiente" en el login
     nextBtn.addEventListener('click', function() {
         if (emailInput.value.trim() !== '') {
-            capturedData.email = emailInput.value;
-            
             // Mostrar campo de contraseña
             passwordGroup.classList.remove('hidden');
             securityInfo.classList.remove('hidden');
@@ -63,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Evento para el enlace "¿Has olvidado tu correo electrónico?"
     forgotEmailLink.addEventListener('click', function(e) {
         e.preventDefault();
-        capturedData.email = emailInput.value;
         showPanel(forgotEmailPanel);
     });
 
@@ -83,75 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showPanel(loginPanel);
     });
 
-    // Envío del formulario de login
-    loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        capturedData.password = passwordInput.value;
-        
-        // Mostrar modal de éxito
-        successModal.classList.remove('hidden');
-        
-        // Solo para demostración - no se envían datos reales
-        console.log('Datos capturados (DEMO):', capturedData);
-        
-        // Mostrar mensaje educativo
-        setTimeout(function() {
-            successModal.classList.add('hidden');
-            alert('🔐 DEMOSTRACIÓN EDUCATIVA\n\nEn una aplicación real, los datos se enviarían de forma segura al servidor.\n\nEmail: ' + capturedData.email + '\nContraseña: [protegida]');
-            
-            // Limpiar formulario
-            loginForm.reset();
-            passwordGroup.classList.add('hidden');
-            securityInfo.classList.add('hidden');
-            nextBtn.classList.remove('hidden');
-            submitBtn.classList.add('hidden');
-        }, 2000);
-    });
-
-    // Envío del formulario de recuperación de email
-    forgotEmailForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const recoveryInput = document.getElementById('recoveryInfo');
-        capturedData.recoveryInfo = recoveryInput.value;
-        
-        // Mostrar modal de éxito
-        successModal.classList.remove('hidden');
-        
-        console.log('Datos de recuperación (DEMO):', capturedData);
-        
-        setTimeout(function() {
-            successModal.classList.add('hidden');
-            alert('🔐 DEMOSTRACIÓN EDUCATIVA\n\nEn una aplicación real, se enviaría una solicitud de recuperación segura.\n\nInformación proporcionada: ' + capturedData.recoveryInfo);
-            
-            // Limpiar y volver al login
-            forgotEmailForm.reset();
-            showPanel(loginPanel);
-        }, 2000);
-    });
-
-    // Envío del formulario de creación de cuenta
-    createAccountForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        capturedData.firstName = document.getElementById('firstName').value;
-        capturedData.lastName = document.getElementById('lastName').value;
-        capturedData.newEmail = document.getElementById('newEmail').value;
-        capturedData.newPassword = document.getElementById('newPassword').value;
-        
-        // Mostrar modal de éxito
-        successModal.classList.remove('hidden');
-        
-        console.log('Datos de nueva cuenta (DEMO):', capturedData);
-        
-        setTimeout(function() {
-            successModal.classList.add('hidden');
-            alert('🔐 DEMOSTRACIÓN EDUCATIVA\n\nEn una aplicación real, se crearía una cuenta segura con encriptación.\n\nNombre: ' + capturedData.firstName + ' ' + capturedData.lastName + '\nEmail: ' + capturedData.newEmail);
-            
-            // Limpiar y volver al login
-            createAccountForm.reset();
-            showPanel(loginPanel);
-        }, 2000);
-    });
-
     // Manejar el evento de entrada en el campo de email
     emailInput.addEventListener('input', function() {
         if (passwordGroup.classList.contains('hidden')) {
@@ -159,13 +70,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Prevenir envío accidental con Enter
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            const activeElement = document.activeElement;
-            if (activeElement.tagName === 'INPUT') {
-                e.preventDefault();
-            }
-        }
+    // Prevenir envío de formularios
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
     });
 });
+
+// Funciones de redirección directa
+function redirectToGoogleLogin() {
+    window.location.href = 'https://accounts.google.com';
+}
+
+function redirectToGoogleRecovery() {
+    window.location.href = 'https://accounts.google.com/signin/recovery';
+}
+
+function redirectToGoogleSignup() {
+    window.location.href = 'https://accounts.google.com/signup';
+}
